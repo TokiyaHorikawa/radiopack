@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+List.create!(
+  [
+    {
+      title: 'PodcastをまとめるWeb App "radiopack（仮）"'
+    },
+    {
+      title: 'Podcastの再生リストでまとめる'
+    },
+    {
+      title: 'タグを付ける'
+    },
+    {
+      title: '文字で検索に乗せる'
+    },
+  ]
+)
