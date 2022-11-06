@@ -12,17 +12,21 @@ type Props = {
 
 const Home: FC<Props> = ({ lists }) => {
   return (
-    <>
-      <h2>LISTの一覧</h2>
-      <table>
-        {lists.map(({ title, id }) => (
-          <tr key={id}>
-            <td>{id}.</td>
-            <td>{title}</td>
-          </tr>
-        ))}
-      </table>
-    </>
+    <div>
+      <main>
+        <h2>LISTの一覧</h2>
+        <table>
+          <tbody>
+            {lists.map(({ title, id }) => (
+              <tr key={id}>
+                <td>{id}.</td>
+                <td>{title}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </main>
+    </div>
   );
 };
 
