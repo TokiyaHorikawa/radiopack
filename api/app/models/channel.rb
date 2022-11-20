@@ -1,3 +1,3 @@
 class Channel < ApplicationRecord
-  has_meny :contents
+  has_many :contents
 end

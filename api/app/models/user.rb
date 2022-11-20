@@ -1,3 +1,5 @@
 class User < ApplicationRecord
-  has_meny :posts
+  has_many :posts
+
+  validates :name, presence: true
 end
