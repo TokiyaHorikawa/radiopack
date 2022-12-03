@@ -15,3 +15,6 @@ http://localhost:3000/
 
 front  
 http://localhost:8000/
+
+graphql デモ
+http://localhost:3000/graphiql
