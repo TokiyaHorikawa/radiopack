@@ -1,12 +1,12 @@
 import React from "react";
 import { NextPage } from "next";
-import { useQuery } from "@apollo/client";
-import { POSTS_QUERY, PostsData } from "../graphql/queries/posts.query";
+
+import { usePosts } from "../hooks/usePosts";
 
 type Props = {};
 
 const Home: NextPage<Props> = () => {
-  const { data } = useQuery<PostsData>(POSTS_QUERY);
+  const { posts } = usePosts();
 
   return (
     <div>
@@ -14,7 +14,7 @@ const Home: NextPage<Props> = () => {
         <h2>LISTの一覧</h2>
         <table>
           <tbody>
-            {data?.posts.map(({ title, id }) => (
+            {posts?.map(({ title, id }) => (
               <tr key={id}>
                 <td>{id}.</td>
                 <td>{title}</td>
