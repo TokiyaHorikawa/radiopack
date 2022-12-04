@@ -1,23 +1,20 @@
-import React, { FC } from "react";
-import { GetStaticProps } from "next";
+import React from "react";
+import { NextPage } from "next";
+import { useQuery } from "@apollo/client";
+import { POSTS_QUERY, PostsData } from "../graphql/queries/posts.query";
 
-type List = {
-  id: number;
-  title: string;
-};
+type Props = {};
 
-type Props = {
-  lists: List[];
-};
+const Home: NextPage<Props> = () => {
+  const { data } = useQuery<PostsData>(POSTS_QUERY);
 
-const Home: FC<Props> = ({ lists }) => {
   return (
     <div>
       <main>
         <h2>LISTの一覧</h2>
         <table>
           <tbody>
-            {lists.map(({ title, id }) => (
+            {data?.posts.map(({ title, id }) => (
               <tr key={id}>
                 <td>{id}.</td>
                 <td>{title}</td>
@@ -28,18 +25,6 @@ const Home: FC<Props> = ({ lists }) => {
       </main>
     </div>
   );
-};
-
-export const getStaticProps: GetStaticProps = async () => {
-  // URLはlocalhostではなくapiとなる
-  const response = await fetch("http://api:3000/lists", { method: "GET" });
-  const json = await response.json();
-
-  return {
-    props: {
-      lists: json,
-    },
-  };
 };
 
 export default Home;
